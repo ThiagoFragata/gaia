@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
 
+  container: {
+    flex: 1,
+  },
+
   connectDevice: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -17,7 +21,7 @@ export const styles = StyleSheet.create({
     margin: normalize(16),
     borderRadius: normalize(8),
     backgroundColor: theme.colors.background,
-    elevation: 4,
+    elevation: 2,
   },
 
   equalizer: {
@@ -30,7 +34,8 @@ export const styles = StyleSheet.create({
     marginBottom: normalize(16),
     borderRadius: normalize(8),
     backgroundColor: theme.colors.background,
-    elevation: 4,
+    elevation: 2,
+    height: 300,
   },
 
   battery: {

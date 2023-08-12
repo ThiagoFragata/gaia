@@ -1,5 +1,11 @@
 import React from 'react';
-import { Image, StatusBar, View, useColorScheme } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StatusBar,
+  View,
+  useColorScheme,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -29,65 +35,70 @@ export default function Device() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+
       <Navbar />
 
-      <View>
-        <Image
-          source={kubaWorld}
-          style={{
-            resizeMode: 'contain',
-            alignSelf: 'center',
-            height: 300,
-          }}
-        />
-        <Text
-          variant="titleLarge"
-          style={{
-            alignSelf: 'center',
-            textTransform: 'uppercase',
-            letterSpacing: 8,
-          }}>
-          Kuba Disco
-        </Text>
-      </View>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 16 }}
+        contentInsetAdjustmentBehavior="automatic">
+        <View>
+          <Image
+            source={kubaWorld}
+            style={{
+              resizeMode: 'contain',
+              alignSelf: 'center',
+              height: 300,
+            }}
+          />
+          <Text
+            variant="titleLarge"
+            style={{
+              alignSelf: 'center',
+              textTransform: 'uppercase',
+              letterSpacing: 8,
+            }}>
+            Kuba Disco
+          </Text>
+        </View>
 
-      <BluetoothBar />
+        <BluetoothBar />
 
-      <View style={styles.equalizer}>
-        <Text variant="titleMedium">Equalizador</Text>
-      </View>
+        <View style={styles.equalizer}>
+          <Text variant="titleMedium">Equalizador</Text>
+        </View>
 
-      <View style={styles.displayButtons}>
-        <Button
-          contentStyle={{
-            paddingVertical: normalize(16),
-          }}
-          style={{
-            flex: 1,
-          }}
-          buttonColor={theme.colors.primary}
-          textColor={theme.colors.dark}
-          icon={() => <Headphones color={theme.colors.dark} />}
-          mode="contained"
-          onPress={() => console.log('Suporte')}>
-          Suporte
-        </Button>
+        <View style={styles.displayButtons}>
+          <Button
+            contentStyle={{
+              paddingVertical: normalize(16),
+            }}
+            style={{
+              flex: 1,
+            }}
+            buttonColor={theme.colors.primary}
+            textColor={theme.colors.dark}
+            icon={() => <Headphones color={theme.colors.dark} />}
+            mode="contained"
+            onPress={() => console.log('Suporte')}>
+            Suporte
+          </Button>
 
-        <Button
-          contentStyle={{
-            paddingVertical: normalize(16),
-          }}
-          style={{
-            flex: 1,
-          }}
-          buttonColor={theme.colors.primary}
-          textColor={theme.colors.dark}
-          icon={() => <Info color={theme.colors.dark} />}
-          mode="contained"
-          onPress={() => console.log('Tutoriais de uso')}>
-          Tutoriais de uso
-        </Button>
-      </View>
+          <Button
+            contentStyle={{
+              paddingVertical: normalize(16),
+            }}
+            style={{
+              flex: 1,
+            }}
+            buttonColor={theme.colors.primary}
+            textColor={theme.colors.dark}
+            icon={() => <Info color={theme.colors.dark} />}
+            mode="contained"
+            onPress={() => console.log('Tutoriais de uso')}>
+            Tutoriais de uso
+          </Button>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
