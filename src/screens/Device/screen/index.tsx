@@ -1,45 +1,36 @@
 import React from 'react';
+import { Image, ScrollView, StatusBar, View } from 'react-native';
 import {
-  Image,
-  ScrollView,
-  StatusBar,
-  View,
-  useColorScheme,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import { Headphones, Info } from 'lucide-react-native';
 import { Button, Text } from 'react-native-paper';
 
 import { kubaWorld } from '../../../assets/images';
 import { Navbar } from '../../../global/components/Navbar';
-import { theme } from '../../../global/theme/theme';
+import useTheme from '../../../global/hooks/useTheme';
 import { normalize } from '../../../utils/normalize';
 import { BluetoothBar } from './../components/bluetoothBar';
 import { styles } from './../styles/styles';
 
 export default function Device() {
-  const isDarkMode = useColorScheme() === 'dark';
   // const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
-
-  const backgroundStyle = {
-    flex: 1,
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const { theme, isMode } = useTheme();
+  const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        barStyle={isMode === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
       />
 
       <Navbar />
 
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 16 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom }}
         contentInsetAdjustmentBehavior="automatic">
         <View>
           <Image
@@ -63,7 +54,11 @@ export default function Device() {
 
         <BluetoothBar />
 
-        <View style={styles.equalizer}>
+        <View
+          style={[
+            styles.equalizer,
+            { backgroundColor: theme.colors.background },
+          ]}>
           <Text variant="titleMedium">Equalizador</Text>
         </View>
 

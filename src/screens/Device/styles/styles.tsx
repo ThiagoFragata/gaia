@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../global/theme/theme';
 import { normalize } from '../../../utils/normalize';
 
 export const styles = StyleSheet.create({
@@ -17,11 +16,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: normalize(16),
-    paddingVertical: normalize(8),
+    paddingVertical: normalize(16),
     margin: normalize(16),
     borderRadius: normalize(8),
-    backgroundColor: theme.colors.background,
-    elevation: 2,
+    elevation: 4,
   },
 
   equalizer: {
@@ -33,9 +31,8 @@ export const styles = StyleSheet.create({
     marginHorizontal: normalize(16),
     marginBottom: normalize(16),
     borderRadius: normalize(8),
-    backgroundColor: theme.colors.background,
-    elevation: 2,
-    height: 300,
+    elevation: 4,
+    height: 250,
   },
 
   battery: {
@@ -47,6 +44,7 @@ export const styles = StyleSheet.create({
 
   displayButtons: {
     marginTop: 'auto',
+    marginBottom: normalize(8),
     flexDirection: 'row',
     paddingHorizontal: normalize(16),
     justifyContent: 'space-between',

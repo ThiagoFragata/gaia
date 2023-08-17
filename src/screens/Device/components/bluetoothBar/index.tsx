@@ -2,30 +2,34 @@ import { Zap } from 'lucide-react-native';
 
 import React from 'react';
 
-import { View, useColorScheme } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 
-import { theme } from '../../../../global/theme/theme';
+import useTheme from '../../../../global/hooks/useTheme';
 import { styles } from '../../styles/styles';
 
 export function BluetoothBar() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const { theme } = useTheme();
 
   let isConnected = true;
 
   return (
-    <View style={styles.connectDevice}>
+    <View
+      style={[
+        styles.connectDevice,
+        { backgroundColor: theme.colors.background },
+      ]}>
       <Text>{isConnected ? 'Conectado' : 'Desconectado'}</Text>
 
       {isConnected && (
         <View style={styles.battery}>
-          <Zap color={isDarkMode ? theme.colors.light : theme.colors.dark} />
+          <Zap color={theme.colors.light} />
           <Text style={{ alignSelf: 'center' }}>100%</Text>
         </View>
       )}
 
       <Button
-        textColor={isDarkMode ? theme.colors.light : theme.colors.dark}
+        textColor={theme.colors.light}
         rippleColor={theme.colors.ripplePrimary}
         onPress={() => console.log('Desconectar')}>
         {isConnected ? 'Desconectar' : 'Conectar'}
