@@ -59,7 +59,7 @@ export default function Device() {
             styles.equalizer,
             { backgroundColor: theme.colors.background },
           ]}>
-          <Text variant="titleMedium">Equalizador</Text>
+          <Text variant="titleMedium">Dispositivos encontrados</Text>
         </View>
 
         <View style={styles.displayButtons}>
